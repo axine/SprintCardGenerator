@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Hello";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+                Upload le fichier xml qui contient les issues.
+            </p>
+            <p>
+                @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" />
+    <input type="submit" value="OK" />
+}
+            </p>
+        </div>
+    </section>
+}
+

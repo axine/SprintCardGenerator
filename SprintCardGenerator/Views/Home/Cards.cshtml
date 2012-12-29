@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SprintCardGenerator.Models.CardViewModel>
+@{
+    ViewBag.Title = "Sprint cards";
+}
+<style type="text/css">
+    td {
+      border-style:solid;
+      border-width:1px;
+    }
+</style>
+<!DOCTYPE html>
+<html>
+<head>
+<style>table { float: left; margin: 10px; height: 300px; width: 400px; page-break-inside: avoid; -webkit-print-color-adjust:exact;}
+</style>
+</head>
+<body>
+@foreach(var card in Model)
+{
+    <table border="1" style="border:1px solid black; border-collapse: collapse">
+    <tr>
+    <th colspan="2" bgcolor=@card.TitleColor><text>@card.IssueKey</text><br><text>@card.ProjectKey<br></text></th>
+    </tr>
+    <tr>
+    <td colspan="2" style="font-weight:bold;" style="width:150;"><text>@card.Summary</text></td>
+    </tr>
+    <tr>
+    <td style="width:130px;">Assignee</td><td><text>@card.Assignee</text></td>
+    </tr>
+    <tr>
+    <td style="width:130px;">Status</td><td><text>@card.Status</text></td>
+    </tr>
+    <tr>
+    <td style="width:130px;">Original estimate</td><td><text>@card.OriginalEstimate</text></td>
+    </tr>
+    <tr>
+    <td style="width:130px;">Time remaining</td><td></td>
+    </tr>
+    </table>
+}
+</body>
+</html>
