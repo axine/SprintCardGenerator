@@ -2,41 +2,60 @@
 @{
     ViewBag.Title = "Sprint cards";
 }
-<style type="text/css">
-    td {
-      border-style:solid;
-      border-width:1px;
-    }
-</style>
-<!DOCTYPE html>
-<html>
-<head>
-<style>table { float: left; margin: 10px; height: 300px; width: 400px; page-break-inside: avoid; -webkit-print-color-adjust:exact;}
-</style>
-</head>
-<body>
+@section extrahead
+{
+    <style type="text/css">
+        table.card
+        {
+            float: left;
+            margin: 10px;
+            height: 300px;
+            width: 400px;
+            page-break-inside: avoid;
+            -webkit-print-color-adjust: exact;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table.card td, table.card th
+        {
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        table.card tr.summary
+        {
+            font-weight: bold;
+            width: 150px;
+        }
+
+        table.card td.label
+        {
+            width: 130px;
+        }
+    </style>
+}
+
 @foreach(var card in Model)
 {
-    <table border="1" style="border:1px solid black; border-collapse: collapse">
+    <table class="card">
     <tr>
-    <th colspan="2" bgcolor=@card.TitleColor><text>@card.IssueKey</text><br><text>@card.ProjectKey<br></text></th>
+        <th colspan="2" bgcolor=@card.TitleColor>@card.IssueKey<br>@card.ProjectKey<br></th>
+    </tr>
+    <tr class="summary">
+        <td colspan="2">@card.Summary</td>
     </tr>
     <tr>
-    <td colspan="2" style="font-weight:bold;" style="width:150;"><text>@card.Summary</text></td>
+        <td class="label">Assignee</td><td>@card.Assignee</td>
     </tr>
     <tr>
-    <td style="width:130px;">Assignee</td><td><text>@card.Assignee</text></td>
+        <td class="label">Status</td><td>@card.Status</td>
     </tr>
     <tr>
-    <td style="width:130px;">Status</td><td><text>@card.Status</text></td>
+        <td class="label">Original estimate</td><td>@card.OriginalEstimate</td>
     </tr>
     <tr>
-    <td style="width:130px;">Original estimate</td><td><text>@card.OriginalEstimate</text></td>
-    </tr>
-    <tr>
-    <td style="width:130px;">Time remaining</td><td></td>
+        <td class="label">Time remaining</td><td></td>
     </tr>
     </table>
 }
-</body>
-</html>
