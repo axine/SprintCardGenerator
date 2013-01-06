@@ -38,6 +38,7 @@ namespace SprintCardGenerator.Controllers
                 return null;
             }            
             var model = GetCardsFromXml(file);
+            ViewBag.ProjectColors = _projectColors;
             return View("Cards", model);
         }
 

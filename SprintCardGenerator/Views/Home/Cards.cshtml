@@ -33,47 +33,17 @@
         {
             width: 130px;
         }
-        /* TODO : have a nice loop instead */
-        .INTGMOB th
+
+        @foreach (var projectColor in ViewBag.ProjectColors)
         {
-            background: #F3F781;
-        }
-        .MOB th
-        {
-            background: #FA5858;
-        }
-        .MOVE th
-        {
-            background: #FAAC58;
-        }
-        .MYVOO th
-        {
-            background: #A9F5BC;
-        }
-        .SSO th
-        {
-            background: #A9A9F5;
-        }
-        .SUBS th
-        {
-            background: #E2A9F3;
-        }
-        .TIMEBOX th
-        {
-            background: #86B404;
-        }
-        .VMAV th
-        {
-            background: #BDAA93;
-        }
-        .WEBDEALS th
-        {
-            background: #A9D0F5;
+            <text>.</text>@projectColor.Key @:th {
+            @:background: @projectColor.Value ; 
+            @:}            
         }
     </style>
 }
 
-@foreach(var card in Model)
+@foreach (var card in Model)
 {
     <table class="card @card.ProjectKey">
     <tr>
