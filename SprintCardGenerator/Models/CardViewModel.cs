@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Web;
+using System.Xml.Linq;
+using System.Xml.XPath;
 
 namespace SprintCardGenerator.Models
 {
     public class CardViewModel
     {
-        public CardViewModel(string title, string issueKey, string projectKey, string assignee, string summary, string estimate, string status)
+        public CardViewModel(XElement e)
         {
-            Title = title;
-            IssueKey = issueKey;
-            ProjectKey = projectKey;
-            Assignee = assignee;
-            Summary = summary;
-            OriginalEstimate = estimate;
-            Status = status;
+            Title = (string)e.XPathSelectElement("title");
+            IssueKey = (string)e.XPathSelectElement("key");
+            ProjectName = (string)e.XPathSelectElement("project");
+            Assignee = (string)e.XPathSelectElement("assignee");
+            Summary = (string)e.XPathSelectElement("summary");
+            OriginalEstimate = (string)e.XPathSelectElement("timeoriginalestimate");
+            Status = (string)e.XPathSelectElement("status");
+            ProjectKey = (string)e.XPathSelectElement("project").Attribute("key");
         }
 
         public string Title { get; set; }
@@ -28,6 +31,7 @@ namespace SprintCardGenerator.Models
         public string Assignee { get; set; }
         public string Reporter { get; set; }
         public string OriginalEstimate { get; set; }
-        public string TitleColor { get; set; }        
+        public string TitleColor { get; set; }
+        public string ProjectName { get; set; }  
     }
 }

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Xml.Linq;
 using SprintCardGenerator.Models;
 
+
 namespace SprintCardGenerator.Controllers
 {
     public class HomeController : Controller
@@ -66,14 +67,7 @@ namespace SprintCardGenerator.Controllers
             var cardViewModels = new List<CardViewModel>();
             foreach (var e in issueItems)
             {
-                var title = GetElementValue(e, "title");
-                var issueKey = GetElementValue(e, "key");
-                var assignee = GetElementValue(e, "assignee");
-                var summary = GetElementValue(e, "summary");
-                var status = GetElementValue(e, "status");
-                var estimate = GetElementValue(e, "timeoriginalestimate");
-                var projectKey = GetElementValue(e, "project");
-                var cardViewModel = new CardViewModel(title, issueKey, projectKey, assignee, summary, estimate, status);
+                var cardViewModel = new CardViewModel(e);
                 cardViewModels.Add(cardViewModel);
                 if (!projectKeys.Contains(cardViewModel.ProjectKey))
                 {

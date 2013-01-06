@@ -33,14 +33,51 @@
         {
             width: 130px;
         }
+        /* TODO : have a nice loop instead */
+        .INTGMOB th
+        {
+            background: #F3F781;
+        }
+        .MOB th
+        {
+            background: #FA5858;
+        }
+        .MOVE th
+        {
+            background: #FAAC58;
+        }
+        .MYVOO th
+        {
+            background: #A9F5BC;
+        }
+        .SSO th
+        {
+            background: #A9A9F5;
+        }
+        .SUBS th
+        {
+            background: #E2A9F3;
+        }
+        .TIMEBOX th
+        {
+            background: #86B404;
+        }
+        .VMAV th
+        {
+            background: #BDAA93;
+        }
+        .WEBDEALS th
+        {
+            background: #A9D0F5;
+        }
     </style>
 }
 
 @foreach(var card in Model)
 {
-    <table class="card">
+    <table class="card @card.ProjectKey">
     <tr>
-        <th colspan="2" bgcolor=@card.TitleColor>@card.IssueKey<br>@card.ProjectKey<br></th>
+        <th colspan="2">@card.IssueKey<br>@card.ProjectKey<br></th>
     </tr>
     <tr class="summary">
         <td colspan="2">@card.Summary</td>
