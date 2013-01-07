@@ -8,12 +8,12 @@
         table.card
         {
             float: left;
-            margin: 10px;
+            margin: 1px;
             height: 300px;
             width: 400px;
             page-break-inside: avoid;
             -webkit-print-color-adjust: exact;
-            border: 1px solid black;
+            border: 2px solid black;
             border-collapse: collapse;
         }
 
@@ -47,7 +47,7 @@
 {
     <table class="card @card.ProjectKey">
     <tr>
-        <th colspan="2">@card.IssueKey<br>@card.ProjectKey<br></th>
+        <th colspan="2">@card.IssueKey<br>@card.ProjectName<br></th>
     </tr>
     <tr class="summary">
         <td colspan="2">@card.Summary</td>
